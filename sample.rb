@@ -37,25 +37,31 @@ end
 		end
 	 end
 
-while(true) do
-	puts "If you want to exit insert 0 or any other number to keep playing"
-	str=gets.to_i
-	if(str==0)
-		break
+
+	 def description(number)
+		player = Player.new(number)
+		arr=[0,1,2]
+		randomly=arr[rand(arr.count)];
+		enemy = Enemy.new(randomly)
+		janken = Janken.new(player,enemy)
+		puts " it is a #{janken.pon(player.hand, enemy.hand)}"
 	end
+while(true) do
+
 puts "please select one among these following:"
 puts "0: Goo"
 puts "1: Choki"
 puts "2: Par"
 number=gets.to_i
-if(number<0 || number>3)
+if(number<0 || number>2)
 	puts "out of boundary"
+elsif(number==2)
+	description(number)
+	break
+elsif(number==1)
+	description(number)
+	break
 else
-	player = Player.new(number)
-	arr=[0,1,2]
-	randomly=arr[rand(arr.count)];
-	enemy = Enemy.new(randomly)
-	janken = Janken.new(player,enemy)
-	puts " it is a #{janken.pon(player.hand, enemy.hand)}"
+	description(number)
 end
 end
