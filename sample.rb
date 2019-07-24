@@ -27,28 +27,28 @@ end
 
 
 while(true) do
-puts "please select one among these following:"
-puts "0: Goo"
-puts "1: Choki"
-puts "2: Par"
-number=gets.to_i
-if(number<0 || number>2 )
-	puts "out of boundary"
-else
-	player = Player.new
-	pr=player.hand(number)
-	enemy = Enemy.new
-	ene=enemy.hand
-	janken = Janken.new
-	if(janken.pon(pr, ene)=="Win")
-		puts " it is a #{janken.pon(pr, ene)}"
-		break
-	elsif(janken.pon(pr, ene)=="Loss")
-		puts " it is a #{janken.pon(pr, ene)}"
-		break
+	puts "please select one among these following:"
+	puts "0: Goo"
+	puts "1: Choki"
+	puts "2: Par"
+	number=gets.to_i
+	if(number<0 || number>2 )
+		puts "out of boundary"
 	else
-		puts " it is a #{janken.pon(pr, ene)}"
-end
-
-end
+		player = Player.new
+		pr=player.hand(number)
+		enemy = Enemy.new
+		ene=enemy.hand
+		janken = Janken.new
+		if(janken.pon(pr, ene)=="Win")
+			puts " it is a #{janken.pon(pr, ene)}"
+			break
+		elsif(janken.pon(pr, ene)=="Loss")
+			puts " it is a #{janken.pon(pr, ene)}"
+			break
+		else
+			puts " it is a #{janken.pon(pr, ene)}"
+		end
+	
+	end
 end
