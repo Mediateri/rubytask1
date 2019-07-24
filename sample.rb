@@ -1,29 +1,19 @@
 class Player
-    attr_accessor :hand
-    def initialize(hand)
-      @hand=hand
-    end
-    def hand
-      return @hand
+    def hand(hand)
+      hand
     end
 end
 
 class Enemy
-  attr_accessor :hand
-  def initialize(hand)
-    @hand=hand
-  end
   def hand
-    return @hand
+	arr=[0,1,2]
+	randomly=arr[rand(arr.count)];
+
+    return randomly
   end
 end
 	 
 	 class Janken
-		attr_accessor :player_hand,:enemy_hand
-		def initialize(player_hand,enemy_hand)
-			@player_hand=player_hand
-			@enemy_hand=enemy_hand
-		end
 		def pon(player_hand, enemy_hand)
 			result=((player_hand-enemy_hand+3)%3)
 			if(result==2)
@@ -45,22 +35,23 @@ puts "0: Goo"
 puts "1: Choki"
 puts "2: Par"
 number=gets.to_i
-if(number<0 || number>2)
+if(number<0 || number>2 )
 	puts "out of boundary"
 else
-	player = Player.new(number)
-	arr=[0,1,2]
-	randomly=arr[rand(arr.count)];
-	enemy = Enemy.new(randomly)
-	janken = Janken.new(player,enemy)
-	if(janken.pon(player.hand, enemy.hand)=="Win")
-		puts " it is a #{janken.pon(player.hand, enemy.hand)}"
+	player = Player.new
+	pr=player.hand(number)
+	
+	enemy = Enemy.new
+	ene=enemy.hand
+	janken = Janken.new
+	if(janken.pon(pr, ene)=="Win")
+		puts " it is a #{janken.pon(pr, ene)}"
 		break
-	elsif(janken.pon(player.hand, enemy.hand)=="Loss")
-		puts " it is a #{janken.pon(player.hand, enemy.hand)}"
+	elsif(janken.pon(pr, ene)=="Loss")
+		puts " it is a #{janken.pon(pr, ene)}"
 		break
 	else
-		puts " it is a #{janken.pon(player.hand, enemy.hand)}"
+		puts " it is a #{janken.pon(pr, ene)}"
 end
 
 end
